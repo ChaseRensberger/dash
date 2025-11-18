@@ -63,12 +63,14 @@ export default function App() {
 	return (
 		<main className="min-h-screen p-8">
 			<h1 className="text-center text-2xl font-semibold">{greeting}, Chase.</h1>
-			<div className='grid grid-cols-[repeat(auto-fit,8rem)] gap-4 py-32'>
-				{Panels.map((panelData) => {
-					return (
-						<Panel panelData={panelData} key={panelData.Url} />
-					)
-				})}
+			<div className='flex justify-center'>
+				<div className='grid grid-cols-4 gap-4 py-32'>
+					{Panels.map((panelData) => {
+						return (
+							<Panel panelData={panelData} key={panelData.Url} />
+						)
+					})}
+				</div>
 			</div>
 		</main >
 	)
