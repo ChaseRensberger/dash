@@ -1,6 +1,6 @@
-import { useMemo, type ComponentType } from 'react'
+import type { ComponentType } from 'react'
 import { Button } from './components/ui/button'
-import { CloudIcon, GithubLogoIcon, NewspaperIcon, NyTimesLogoIcon, StarIcon, YoutubeLogoIcon } from '@phosphor-icons/react'
+import { CloudIcon, FootballIcon, GithubLogoIcon, NewspaperIcon, NyTimesLogoIcon, StarIcon, YoutubeLogoIcon } from '@phosphor-icons/react'
 
 function getGreeting(): string {
 	const hour = new Date().getHours()
@@ -17,63 +17,63 @@ function getGreeting(): string {
 }
 
 interface PanelData {
-	Url: string
-	Icon: ComponentType<any>
+	url: string
+	icon: ComponentType<{ size?: number }>
 }
 
 const Panels: PanelData[] = [
 	{
-		Url: "https://www.nytimes.com",
-		Icon: NyTimesLogoIcon,
+		url: "https://www.nytimes.com",
+		icon: NyTimesLogoIcon,
 	},
 	{
-		Url: "https://news.ycombinator.com",
-		Icon: NewspaperIcon
+		url: "https://news.ycombinator.com",
+		icon: NewspaperIcon
 	},
 	{
-		Url: "https://www.youtube.com",
-		Icon: YoutubeLogoIcon
+		url: "https://www.youtube.com",
+		icon: YoutubeLogoIcon
 	},
 	{
-		Url: "https://www.learnedleague.com",
-		Icon: StarIcon
+		url: "https://www.learnedleague.com",
+		icon: StarIcon
 	},
 	{
-		Url: "https://www.github.com",
-		Icon: GithubLogoIcon
+		url: "https://www.github.com",
+		icon: GithubLogoIcon
 	},
 	{
-		Url: "https://www.icloud.com/",
-		Icon: CloudIcon
+		url: "https://www.icloud.com/",
+		icon: CloudIcon
+	},
+	{
+		url: "https://plaintextsports.com/",
+		icon: FootballIcon
 	}
 ]
 
 function Panel({ panelData }: { panelData: PanelData }) {
 	return (
 		<Button variant="default" className="h-24 w-24 flex items-center justify-center" asChild>
-			<a href={panelData.Url} target="_blank" rel="noopener noreferrer">
-				<panelData.Icon size={32} />
+			<a href={panelData.url} target="_blank" rel="noopener noreferrer">
+				<panelData.icon size={32} />
 			</a>
 		</Button>
 	)
 }
 
 export default function App() {
-	const greeting = useMemo(() => getGreeting(), [])
+	const greeting = getGreeting()
 	return (
 		<main className="min-h-screen p-8">
 			<h1 className="text-center text-2xl font-semibold">{greeting}, Chase.</h1>
-			<div className='flex justify-center'>
-				<div className='grid grid-cols-4 gap-4 py-32'>
-					{Panels.map((panelData) => {
-						return (
-							<Panel panelData={panelData} key={panelData.Url} />
-						)
-					})}
+			<div className="flex justify-center">
+				<div className="grid grid-cols-4 gap-4 py-32">
+					{Panels.map((panelData) => (
+						<Panel panelData={panelData} key={panelData.url} />
+					))}
 				</div>
 			</div>
-		</main >
+		</main>
 	)
 }
-
-
