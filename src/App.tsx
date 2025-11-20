@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 import { Button } from './components/ui/button'
-import { CloudIcon, FootballIcon, GithubLogoIcon, NewspaperIcon, NyTimesLogoIcon, StarIcon, YoutubeLogoIcon } from '@phosphor-icons/react'
+import { CloudIcon, FootballIcon, GithubLogoIcon, NewspaperIcon, NyTimesLogoIcon, StarIcon, TelevisionIcon, YoutubeLogoIcon } from '@phosphor-icons/react'
 
 function getGreeting(): string {
 	const hour = new Date().getHours()
@@ -47,8 +47,12 @@ const Panels: PanelData[] = [
 		icon: CloudIcon
 	},
 	{
-		url: "https://plaintextsports.com/",
+		url: "https://www.plaintextsports.com/",
 		icon: FootballIcon
+	},
+	{
+		url: "https://www.netflix.com",
+		icon: TelevisionIcon
 	}
 ]
 
